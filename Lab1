@@ -1,0 +1,168 @@
+#Taylor Lynch
+#I have programed for a max level of a B
+#This is a B level becasue i have compleated the requirements 1 through 4 and 6
+#I have also attempted requirement 5
+print("Enter letters from the alphabet to represent your variables.")
+print("Connectors to use:  type 'and' for /\, type 'or' for \/")
+print("and implies type '>' for >. For negate use '~' ")
+print("  ")
+print("For the connectors 'and','or' must be typed in!!")
+print("if you do not enter a valid input,it will ask if you want to try again.")
+print("  ")
+#tell them to space between variables and connector
+print("When you are entering your input you MUST put a space between your")
+print("variables and connector.")
+print("Ex. For output like p /\ q, then type: p and q")
+print("If you want a negate symbol,it MUST be the first thing you enter.")
+#put the '~' in y[0] if they need to use it
+print("Also a space between it and the variable it's with. Ex. ~ p and q")
+print("   ")
+print("If you are using Trinomials & parentheses you MUST put a space")
+print("between the parentheses and the values/connectors to run.")
+print("Ex. ( p and q ) and r  -or-  p and ( q and r )")
+print("  ")
+
+#make "globel" variables
+#make dict variable for a for loop
+dict=['T','F']
+Truth=[]
+Truth1=[]
+
+#make a while loop to stay in the program until 'exit'
+while True:
+  try:
+    x = input ("Enter your input: ")
+
+  except:
+      print("Error, please try again.")
+#variable for the length
+  L=len(x)
+  #print(L)
+#if x has uppercase letters make them lowercase
+  x=x.lower()
+  y=x.split()
+#if elif statement depending on the length of the string
+#command to make letters lowercase
+  if L==1:
+      print(y[0])
+      for num in dict:
+          print(num)
+      #do something
+#split check for 3 or more variable
+  elif L>=3:
+      SplitL=len(x.split())
+      #print(L)
+      #print(dict[0])
+      if y[0] != '~':
+          if y[1]== 'and':
+              print(y[0] + " " + y[2] + "  " + y[0] + "/\\" + y[2])
+              Truth=['T','F','F','F']
+          elif y[1]== 'or':
+              print(y[0] + " " + y[2] + "  " + y[0] + "\/" + y[2])
+              Truth=['T','T','T','F']
+          elif y[1]== '>':
+              print(y[0] + " " + y[2] + "  " + y[0] + ">" + y[2])
+              Truth=['T','F','T','T']
+          print(dict[0] + " " + dict[0] + "   " + Truth[0])
+          print(dict[0] + " " + dict[1] + "   " + Truth[1])
+          print(dict[1] + " " + dict[0] + "   " + Truth[2])
+          print(dict[1] + " " + dict[1] + "   " + Truth[3])
+#enter elif statement to make sure no errors occur
+#if the first variable has '~' this mean it will make it false before true
+      elif y[0]== '~':
+          if y[2]== 'and':
+              print(y[0] + y[1] + " " + y[3] + "  " + y[0]+y[1] + "/\\" + y[3])
+              Truth1=['F','T','F','F']
+          elif y[2]== 'or':
+              print(y[0] + y[1] + " " + y[3] + "  " + y[0]+y[1] + '\/' + y[3])
+              Truth1=['T','T','F','T']
+          elif y[2]== '>':
+              print(y[0] + y[1] + " " + y[3] + "  " + y[0]+y[1] + '>' + y[3])
+              Truth1=['F','T','T','T']
+          #print(Truth1)
+          print(" " + dict[1] + " " + dict[0] + "    " + Truth1[0])
+          print(" " + dict[1] + " " + dict[1] + "    " + Truth1[1])
+          print(" " + dict[0] + " " + dict[0] + "    " + Truth1[2])
+          print(" " + dict[0] + " " + dict[1] + "    " + Truth1[3])
+  elif L>=7:
+          #print(SplitL)
+
+          if y[0] != '~':
+              if y[0]=='('and y[4]==')':
+                  if y[2]== 'and':
+                      if y[5]=='and':
+                          print(y[1] + " " + y[3] + " " + y[6] + "  " + "(" + y[1] + "/\\" + y[3] + ")" + "/\\" + y[6])
+                          Truth=['F','F','F','F','F','F','F','T']
+                      elif y[5]=='or':
+                          print(y[1] + " " + y[3] + " " + y[6] + "  " + "(" + y[1] + "/\\" + y[3] + ")" + "\/" + y[6])
+                          Truth=['F','T','F','T','F','T','T','T']
+                      elif y[5]=='>':
+                          print(y[1] + " " + y[3] + " " + y[6] + "  " + "(" + y[1] + "/\\" + y[3] + ")" + ">" + y[6])
+                          Truth=['T','T','T','T','T','T','F','T']
+                  elif y[2]=='or':
+                      if y[5]=='and':
+                          print(y[1] + " " + y[3] + " " + y[6] + "  " + "(" + y[1] + "\/" + y[3] + ")" + "/\\" + y[6])
+                          Truth=['F','F','F','T','F','T','F','T']
+                      elif y[5]=='or':
+                          print(y[1] + " " + y[3] + " " + y[6] + "  " + "(" + y[1] + "\/" + y[3] + ")" + "\/" + y[6])
+                          Truth=['F','F','F','T','F','T','F','T']
+                      elif y[5]=='>':
+                          print(y[1] + " " + y[3] + " " + y[6] + "  " + "(" + y[1] + "\/" + y[3] + ")" + ">" + y[6])
+                          Truth=['T','T','F','T','F','T','F','T']
+                  elif y[2]== '>':
+                       if y[5]=='and':
+                           print(y[1] + " " + y[3] + " " + y[6] + "  " + "(" + y[1] + ">" + y[3] + ")" + "/\\" + y[6])
+                           Truth=['F','T','F','T','F','F','F','T']
+                       elif y[5]=='or':
+                           print(y[1] + " " + y[3] + " " + y[6] + "  " + "(" + y[1] + ">" + y[3] + ")" + "\/" + y[6])
+                           Truth=['T','T','T','T','F','T','T','T']
+                       elif y[5]=='>':
+                           print(y[1] + " " + y[3] + " " + y[6] + "  " + "(" + y[1] + ">" + y[3] + ")" + ">" + y[6])
+                           Truth=['F','T','F','T','T','T','F','T']
+
+              elif y[2]=='(' and y[6]==')':
+                  if y[1]== 'and':
+                      if y[4]=='and':
+                          print(y[0] + " " + y[3] + " " + y[5] + "  " + y[0] + "/\\" + "(" + y[3] + "/\\" + y[5] + ")")
+                          Truth=['F','F','F','F','F','F','F','T']
+                      elif y[4]=='or':
+                          print(y[0] + " " + y[3] + " " + y[5] + "  " + y[0] + "/\\" + "(" + y[3] + "\/" + y[5] + ")")
+                          Truth=['F','F','F','F','F','T','T','T']
+                      elif y[4]=='>':
+                          print(y[0] + " " + y[3] + " " + y[5] + "  " + y[0] + "/\\" + "(" + y[3] + ">" + y[5] + ")")
+                          Truth=['F','F','F','F','T','T','F','T']
+                  elif y[1]=='or':
+                      if y[4]=='and':
+                          print(y[0] + " " + y[3] + " " + y[5] + "  " + y[0] + "\/" + "(" + y[3] + "/\\" + y[5] + ")")
+                          Truth=['F','F','F','T','T','T','T','T']
+                      elif y[4]=='or':
+                          print(y[0] + " " + y[3] + " " + y[5] + "  " + y[0] + "\/" + "(" + y[3] + "\/" + y[5] + ")")
+                          Truth=['F','T','T','T','T','T','T','T']
+                      elif y[4]=='>':
+                          print(y[0] + " " + y[3] + " " + y[5] + "  " + y[0] + "\/" + "(" + y[3] + ">" + y[5] + ")")
+                          Truth=['T','T','F','T','T','T','T','T']
+                  elif y[1]== '>':
+                       if y[4]=='and':
+                           print(y[0] + " " + y[3] + " " + y[5] + "  " + y[0] + ">" + "(" + y[3] + "/\\" + y[5] + ")")
+                           Truth=['T','T','T','T','F','F','F','T']
+                       elif y[4]=='or':
+                           print(y[0] + " " + y[3] + " " + y[5] + "  " + y[0] + ">" + "(" + y[3] + "\/" + y[5] + ")")
+                           Truth=['T','T','T','T','F','T','T','T']
+                       elif y[4]=='>':
+                           print(y[0] + " " + y[3] + " " + y[5] + "  " + y[0] + ">" + "(" + y[3] + ">" + y[5] + ")")
+                           Truth=['T','T','T','T','T','T','F','T']
+
+          print(dict[0] + " " + dict[0] + " " + dict[0] + "    " + Truth[0])
+          print(dict[0] + " " + dict[0] + " " + dict[1] + "    " + Truth[1])
+          print(dict[0] + " " + dict[1] + " " + dict[0] + "    " + Truth[2])
+          print(dict[0] + " " + dict[1] + " " + dict[1] + "    " + Truth[3])
+          print(dict[1] + " " + dict[0] + " " + dict[0] + "    " + Truth[4])
+          print(dict[1] + " " + dict[0] + " " + dict[1] + "    " + Truth[5])
+          print(dict[1] + " " + dict[1] + " " + dict[0] + "    " + Truth[6])
+          print(dict[1] + " " + dict[1] + " " + dict[1] + "    " + Truth[7])
+
+
+  exit=input("Would you like to try again?(y/n): ")
+  if exit=='n':
+    print("Bye")
+    break
